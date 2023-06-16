@@ -1,4 +1,24 @@
 import random
+import time
+import sys
+
+def type_out(text):
+    for char in text:
+        print(char, end='', flush=True)
+        time.sleep(0.05)
+    print()
+
+def blink_text(text, blink_text):
+    for _ in range(3):
+        sys.stdout.write("\r" + " " * len(text))  # Erase the text
+        sys.stdout.flush()
+        time.sleep(0.3)
+        sys.stdout.write("\r" + blink_text)  # Display the blinking text
+        sys.stdout.flush()
+        time.sleep(0.3)
+    sys.stdout.write("\r" + " " * len(blink_text))  # Erase the blinking text after blinking
+    sys.stdout.flush()
+    print()
 
 flag1 = True
 while flag1 == True:
@@ -29,9 +49,11 @@ while flag1 == True:
                 or (player_choice == "paper" and computer_choice == "rock")
                 or (player_choice == "scissors" and computer_choice == "paper")
             ):
-                print("Player wins!")
+                type_out("Player wins!")
+                blink_text("Player wins!", "Blinking Text!")
             else:
-                print("Computer wins!")
+                type_out("Computer wins!")
+                blink_text("Computer wins!", "Fucking Loser!")
 
             play_again = input("Do you want to play again? (yes/no): ")
             if play_again.lower() != "yes":
@@ -54,7 +76,7 @@ while flag1 == True:
             if highscore == "1":
                 print("List of players sorted with most wins")
                 list1 = input(
-                    "Return to main menu with (m) or return to high score lists by pressing any key >>>"
+                    "Return to main menu with (m) or return to high score lists by pressing any key"
                 )
                 if list1 == "m":
                     flag2 = False
