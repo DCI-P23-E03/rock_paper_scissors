@@ -54,7 +54,7 @@ while flag1 == True:
             if highscore == "1":
                 print("List of players sorted with most wins")
                 list1 = input(
-                    "Return to main menu with (m) or return to high score lists by pressing any key"
+                    "Return to main menu with (m) or return to high score lists by pressing any key >>>"
                 )
                 if list1 == "m":
                     flag2 = False
