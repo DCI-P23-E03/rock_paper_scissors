@@ -16,8 +16,8 @@ while True:
     print('''
     [0] - Final Exit
     [1] - Play
-    [2] - Scorboard/Dashboard
-    [3] - High Scorer Player
+    [2] - High Scorer Player
+    [3] - Scorboard/Dashboard
     ''')
 
 
@@ -77,7 +77,7 @@ while True:
         
        
     elif option == "2":
-        print("\nHere you goes....The Scoreboard of the same:.........: ")
+        print("\nThe Highest scores of Player......\n")
         
         player_list = [player_name, player_profile]
         player_profile =[total_wins,total_loses,total_draw]
@@ -85,18 +85,19 @@ while True:
             player_list.append(player_list)
             count = total_wins+total_loses+total_draw
 
-            print(f"\nPlayer details on Scoreboard:   \n", 
+            '''print(f"\nPlayer details on Scoreboard:   \n", 
             "\nPlayer_Name: ", player_name,
             "\nTotal Games played: ", count,
             "\nTotal Wins: ", total_wins,
             "\nTotal Loses: ", total_loses,
             "\nTotal Draw: ",total_draw
-            )
+            )'''
+            #print("\nScoreboard of High Score Player......", )
             break
 
 
     elif option == "3":
-        print("\nThe Highest scores of Player......\n")
+        print("\nHere you goes....The Scoreboard of the same:.........: ")
 
         count = total_wins+total_loses+total_draw      
         '''player_name_profile = {"Name":player_name, "Player_Profile":player_profile}    
@@ -118,10 +119,16 @@ while True:
                          "Total Loses":total_loses,
                          "Total Draw":total_draw}
         
-        player_data.update({player_name:player_profile}) 
-           
+        #player_name = {"Player Name":player_name}
+        player_data.update({player_name:player_profile})
 
-        print("\nScoreboard of High Score Player......", player_data)
+        for x, y in player_data.items():
+            print("\nPlayer Name : ", x)
+            for a,b in player_profile.items():
+                print(a,b)
+                
+        #print("\nPlayer details on Scoreboard:   \n", player_data)
+        
 
     else:
         print("Exiting.......")    
