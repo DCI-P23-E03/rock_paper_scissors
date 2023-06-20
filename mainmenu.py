@@ -10,7 +10,8 @@ player_profile = ""
 player_score = ""
 choice1 = ""
 count = 0
-    
+player_data ={}
+
 while True:
     print('''
     [0] - Final Exit
@@ -25,7 +26,13 @@ while True:
     if option == "1":
         print("\nYuhuuu!!! Your game begins now......:")
         player_name = input("\nEnter Your Name: ")
+        #while (player_name.isalpha() != True):  
+        #    print("Please enter the name using valid string..")
+            
         player_age = input("\nEnter Your Age: ")
+        #while (player_age.isnumeric() != True):
+        #    print("Please enter your age using valid numbers..")
+
         input()
         print('''
         Let's begin.......
@@ -71,12 +78,13 @@ while True:
        
     elif option == "2":
         print("\nHere you goes....The Scoreboard of the same:.........: ")
+        
         player_list = [player_name, player_profile]
         player_profile =[total_wins,total_loses,total_draw]
         for player_name in player_list:
             player_list.append(player_list)
             count = total_wins+total_loses+total_draw
-            
+
             print(f"\nPlayer details on Scoreboard:   \n", 
             "\nPlayer_Name: ", player_name,
             "\nTotal Games played: ", count,
@@ -88,24 +96,32 @@ while True:
 
 
     elif option == "3":
-        print("\nThe Highest scores of Player......\n")      
-        player_name_profile = {"\nName":player_name, "\nPlayer_Profile":player_profile}
+        print("\nThe Highest scores of Player......\n")
 
-       
+        count = total_wins+total_loses+total_draw      
+        '''player_name_profile = {"Name":player_name, "Player_Profile":player_profile}    
         player_profile = {
-            #"Name":player_name,
-            "\nTotal_Wins":total_wins,
-            "\nTotal_Loses":total_loses,
-            "\nTotal_Draw":total_draw  
+            "Total_Games_Played ": count,
+            "nTotal_Wins":total_wins,
+            "Total_Loses":total_loses,
+            "Total_Draw":total_draw  
         }
-        player_name_profile.update({"\nName":player_name,"\nPlayer_Profile":player_profile})
+        player_name_profile.update({"Name":player_name,"Player_Profile":player_profile})
         player_profile.update({
-            #"Name":player_name,
-            "\nTotal_Wins":total_wins,
-            "\nTotal_Loses":total_loses,
-            "\nTotal_Draw":total_draw})
+            "Total Games played ":count,
+            "Total_Wins":total_wins,
+            "Total_Loses":total_loses,
+            "Total_Draw":total_draw})
+        '''
+        player_profile ={"Total Game":count,
+                         "Total Win":total_wins,
+                         "Total Loses":total_loses,
+                         "Total Draw":total_draw}
         
-        print("\nScoreboard of High Score Player......", player_name_profile)
+        player_data.update({player_name:player_profile}) 
+           
+
+        print("\nScoreboard of High Score Player......", player_data)
 
     else:
         print("Exiting.......")    
