@@ -1,117 +1,105 @@
+from os import system as x
 import random
-import time
-import sys
 
-def type_out(text):
-    for char in text:
-        print(char, end='', flush=True)
-        time.sleep(0.05)
-    print()
+player_name = ""
+player_age = ""
+player_data = {}
 
-def blink_text(text, blink_text):
-    for _ in range(3):
-        sys.stdout.write("\r" + " " * len(text))  # Erase the text
-        sys.stdout.flush()
-        time.sleep(0.3)
-        sys.stdout.write("\r" + blink_text)  # Display the blinking text
-        sys.stdout.flush()
-        time.sleep(0.3)
-    sys.stdout.write("\r" + " " * len(blink_text))  # Erase the blinking text after blinking
-    sys.stdout.flush()
-    print()
+while True:
+    print('''
+    [0] - Final Exit
+    [1] - Play
+    [2] - High Scorer Player
+    [3] - Scoreboard/Dashboard
+    ''')
 
-flag1 = True
-while flag1 == True:
-    print("----------------------------------------------------------")
-    print("-----Welcome to the game of Rock, Paper and Scissors!-----")
-    print("----------------------------------------------------------")
-    print("----------------Choose 1 to start new game----------------")
-    print("-------------Choose 2 to view high score lists------------")
-    print("--------------------Choose 3 to exit----------------------")
-    print("----------------------------------------------------------")
-    menu = input("Your choice? ")
+    option = input("Select an option: ")
 
-    if menu == "1":
-        print("Game starts")
+    if option == "1":
+        total_wins = 0
+        total_loses = 0
+        total_draw = 0
+
+        print("\nYuhuuu!!! Your game begins now......:")
+        player_name = input("\nEnter Your Name: ")
+        player_age = input("\nEnter Your Age: ")
+
+        input()
+        x("clear")
+        print('''
+        Let's begin.......
+        Enter your choice from Rock, Paper, Scissors
+        ''')
 
         while True:
-            choices = ["rock", "paper", "scissors"]
-            player_choice = input("Choose your move (rock, paper, scissors): ").lower()
-            computer_choice = random.choice(choices)
+            choice1 = [
+                "Rock",
+                "Paper",
+                "Scissors",
+            ]
+            computer_choice1 = random.choice(choice1)
+            player_choice = input("Enter your choice: ").capitalize()
+            print("Computer Choice: ", computer_choice1)
 
-            print("Player chooses:", player_choice)
-            print("Computer chooses:", computer_choice)
-
-            if player_choice == computer_choice:
-                print("It's a tie!")
-            elif (
-                (player_choice == "rock" and computer_choice == "scissors")
-                or (player_choice == "paper" and computer_choice == "rock")
-                or (player_choice == "scissors" and computer_choice == "paper")
+            if (
+                (player_choice == "Rock" and computer_choice1 == "Scissors")
+                or (player_choice == "Scissors" and computer_choice1 == "Paper")
+                or (player_choice == "Paper" and computer_choice1 == "Rock")
             ):
-                type_out("Player wins!")
-                blink_text("Player wins!", "Blinking Text!")
+                print("\nYipppiee..... You WON!!!!")
+                total_wins += 1
+            elif (
+                (computer_choice1 == "Rock" and player_choice == "Scissors")
+                or (computer_choice1 == "Scissors" and player_choice == "Paper")
+                or (computer_choice1 == "Paper" and player_choice == "Rock")
+            ):
+                print("\nSORRY!!!! You Lose.... Play again to Win")
+                total_loses += 1
+            elif computer_choice1 == player_choice:
+                print("\nIt's a draw..... Play again to Win!!!!")
+                total_draw += 1
             else:
-                type_out("Computer wins!")
-                blink_text("Computer wins!", "Fucking Loser!")
+                print("\nError........................Warning...................")
 
-            play_again = input("Do you want to play again? (yes/no): ")
-            if play_again.lower() != "yes":
+            yes_no = input("\nDo you wish to continue: y/n  : ").lower()
+            if yes_no == "n":
+                print("\nOh!!! No Problem you play later......")
+                x("clear")
                 break
+            else:
+                print("\nGlad you are continuing.......")
+                input()
+                print("\nNext game...... ")
+                x("clear")
+
+        player_data[player_name] = {
+            "Total Game": total_wins + total_loses + total_draw,
+            "Total Win": total_wins,
+            "Total Loses": total_loses,
+            "Total Draw": total_draw
+        }
 
         continue
 
-    elif menu == "2":
-        flag2 = True
-        while flag2 == True:
-            print("----------------------------------------------------------")
-            print("-----------------Choose 1 for winners list----------------")
-            print("------------------Choose 2 for games list-----------------")
-            print("------------------Choose 3 for draws list-----------------")
-            print("------------------Choose 4 for losers list----------------")
-            print("-------------------Choose 5 for main menu-----------------")
-            print("----------------------------------------------------------")
-            highscore = input("Your choice? ")
+    elif option == "2":
+        print("\nThe Highest scores of Player......\n")
+        player_list = [player_name, player_profile]
+        player_profile = [total_wins, total_loses, total_draw]
+        for player_name in player_list:
+            player_list.append(player_list)
+            count = total_wins + total_loses + total_draw
+            break
 
-            if highscore == "1":
-                print("List of players sorted with most wins")
-                list1 = input(
-                    "Return to main menu with (m) or return to high score lists by pressing any key"
-                )
-                if list1 == "m":
-                    flag2 = False
-
-            elif highscore == "2":
-                print("List of players sorted with most games")
-                list2 = input(
-                    "Return to main menu with (m) or return to high score lists by pressing any key"
-                )
-                if list2 == "m":
-                    flag2 = False
-
-            elif highscore == "3":
-                print("List of players sorted with most draws")
-                list3 = input(
-                    "Return to main menu with (m) or return to high score lists by pressing any key"
-                )
-                if list3 == "m":
-                    flag2 = False
-
-            elif highscore == "4":
-                print("List of players sorted with most loses")
-                list4 = input(
-                    "Return to main menu with (m) or return to high score lists by pressing any key"
-                )
-                if list4 == "m":
-                    flag2 = False
-
-            else:
-                flag2 = False
-
-    elif menu == "3":
-        print("Thanks for playing, see you later!")
-        flag1 = False
+    elif option == "3":
+        print("\nHere you go....The Scoreboard: ")
+        print("\n{: <15}{: <15}{: <15}{: <15}".format("Player", "Total Games", "Total Wins", "Total Loses"))
+        print("-" * 60)
+        for player_name, player_profile in player_data.items():
+            total_games = player_profile["Total Game"]
+            total_wins = player_profile["Total Win"]
+            total_loses = player_profile["Total Loses"]
+            print("{: <15}{: <15}{: <15}{: <15}".format(player_name, total_games, total_wins, total_loses))
 
     else:
-        print("Wrong input please try again")
-        flag1 = True
+        print("Exiting.......")
+        break
