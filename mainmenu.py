@@ -24,6 +24,10 @@ while True:
     option = input("Select an option: ")
 
     if option == "1":
+        total_wins = 0
+        total_loses = 0
+        total_draw = 0
+            
         print("\nYuhuuu!!! Your game begins now......:")
         player_name = input("\nEnter Your Name: ")
         #while (player_name.isalpha() != True):  
@@ -32,8 +36,9 @@ while True:
         player_age = input("\nEnter Your Age: ")
         #while (player_age.isnumeric() != True):
         #    print("Please enter your age using valid numbers..")
-
+        
         input()
+        x("clear")
         print('''
         Let's begin.......
         Enter your choice from Rock , Paper , Scissors
@@ -49,7 +54,7 @@ while True:
             computer_choice1 = random.choice(choice1)
             player_choice =  input("Enter your choice: ").capitalize()
             print("Computer Choice: ",computer_choice1)
-        
+            
             if ((player_choice == "Rock" and computer_choice1 == "Scissors") or (player_choice == "Scissors" and computer_choice1 =="Paper") or (player_choice == "Paper" and computer_choice1 =="Rock")):
                 print("\nYipppiee..... You WON!!!!")
                 total_wins +=1
@@ -60,22 +65,24 @@ while True:
                 print("\nIt's a draw..... Play again to Win!!!!")
                 total_draw +=1
             else:    
-                print("\nError........................Waring...................")        
+                print("\nError........................Warning...................")        
 
 
-            yes_no = input("\nDo you wish to continue: y/n  :").lower()
+            yes_no = input("\nDo you wish to continue: y/n  : ").lower()
             if yes_no == "n":
                 print("\nOh!!! No Problem you play later......")
+                x("clear")
                 break
             
             else:
                 print("\nGlad you are continuing.......")
                 input()
                 print("\nNext game...... ")
+                x("clear")
         
         continue
         
-       
+        
     elif option == "2":
         print("\nThe Highest scores of Player......\n")
         
@@ -114,20 +121,28 @@ while True:
             "Total_Loses":total_loses,
             "Total_Draw":total_draw})
         '''
-        player_profile ={"Total Game":count,
-                         "Total Win":total_wins,
-                         "Total Loses":total_loses,
-                         "Total Draw":total_draw}
+        player_profile = {
+                        "Total Game":count,
+                        "Total Win":total_wins,
+                        "Total Loses":total_loses,
+                        "Total Draw":total_draw
+                        }
         
         #player_name = {"Player Name":player_name}
         player_data.update({player_name:player_profile})
-
-        for x, y in player_data.items():
-            print("\nPlayer Name : ", x)
-            for a,b in player_profile.items():
-                print(a,b)
-                
         #print("\nPlayer details on Scoreboard:   \n", player_data)
+
+        for playername, playerprofile in player_data.items():
+            #print("\nPlayer Name : ", playername)
+            for playerprofile, value in player_data.items(): 
+                print(f"{playerprofile} : {value}")
+            
+                
+
+
+      
+      
+        
         
 
     else:
