@@ -1,8 +1,6 @@
 from os import system as x
 import random
 
-player_name = ""
-player_age = ""
 player_data = {}
 
 while True:
@@ -92,13 +90,13 @@ while True:
 
     elif option == "3":
         print("\nHere you go....The Scoreboard: ")
-        print("\n{: <15}{: <15}{: <15}{: <15}".format("Player", "Total Games", "Total Wins", "Total Loses"))
+        print("\n{:<15}{:<15}{:<15}{:<15}".format("Player", "Total Games", "Total Wins", "Total Loses"))
         print("-" * 60)
         for player_name, player_profile in player_data.items():
             total_games = player_profile["Total Game"]
             total_wins = player_profile["Total Win"]
             total_loses = player_profile["Total Loses"]
-            print("{: <15}{: <15}{: <15}{: <15}".format(player_name, total_games, total_wins, total_loses))
+            print("{:<15}{:<15}{:<15}{:<15}".format(player_name, total_games, total_wins, total_loses))
 
     else:
         print("Exiting.......")
