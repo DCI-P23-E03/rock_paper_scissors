@@ -89,63 +89,67 @@ while True:
         
         
     elif option == "2": # shows the highest scores of the play by taking the option "2" 
-        print("\nThe Highest scores of Player......\n")
+        print("\nTodays highest scoring player is......\n")
         
-        player_list = [player_name, player_profile]
-        player_profile =[total_wins,total_loses,total_draw]
-        for player_name in player_list:
-            player_list.append(player_list)
-            count = total_wins+total_loses+total_draw
+        player_profile = {  # dictionary created for getting the highest scores throgh total wins.
+                        "Player Name":player_name,
+                        "Total Games":total_wins+total_loses+total_draw,
+                        "Total Win":total_wins,        
+                        }
+        player_data.update({player_name:player_profile}) # updating the dictionary with player's name and it's profile
 
-            '''print(f"\nPlayer details on Scoreboard:   \n", 
-            "\nPlayer_Name: ", player_name,
-            "\nTotal Games played: ", count,
-            "\nTotal Wins: ", total_wins,
-            "\nTotal Loses: ", total_loses,
-            "\nTotal Draw: ",total_draw
-            )'''
-            #print("\nScoreboard of High Score Player......", )
-            break
+        most_wins = 0
+        top_player = ""
 
+        for player_name1, player_profile1 in player_data.items(): # for loop for getting the player name and its profile details stored in player data dictonary
+            total_wins = player_profile.get("Total Win") # getting the value from player_profile dictionary for Total wins.
+            print(total_wins)
+            if total_wins > most_wins:   # comparing total_wins with most_wins
+                most_wins = total_wins   # most_wins will be the highest total wins
+                top_player = player_name1 # top_player will the player_name who scored max total wins
 
+        print(f"{top_player} with amazing {most_wins} wins today!\n")
+        print("Press any key to continue")
+        input()
+        
     elif option == "3": # shows the scoreboard of the play by taking the option "3"
         print("\nHere you goes....The Scoreboard of the Game:.........: \n")
-
-        count = total_wins+total_loses+total_draw      
-        '''player_name_profile = {"Name":player_name, "Player_Profile":player_profile}    
-        player_profile = {
-            "Total_Games_Played ": count,
-            "nTotal_Wins":total_wins,
-            "Total_Loses":total_loses,
-            "Total_Draw":total_draw  
+        print("\n{:<15}{:<15}{:<15}{:<15}{:<15}".format("Player", "Total Games", "Total Wins", "Total Loses", "Total Draws")) # formatting and presentation of Scoreboard
+        print("-" * 73) # formatting and presentation of Scoreboard
+      
+        player_data[player_name] = { # dictionary created with player name and its profile
+            "Total Games": total_wins + total_loses + total_draw, # total games played is summation of total wins, total loses, total draws.
+            "Total Wins": total_wins,
+            "Total Loses": total_loses,
+            "Total Draws": total_draw
         }
-        player_name_profile.update({"Name":player_name,"Player_Profile":player_profile})
-        player_profile.update({
-            "Total Games played ":count,
-            "Total_Wins":total_wins,
-            "Total_Loses":total_loses,
-            "Total_Draw":total_draw})
-        '''
-        player_profile = { # sub dictionary of profile_data dictionary
+        for player_name, player_profile in player_data.items(): #loop for getting the values player_data for each player
+            total_games = player_profile["Total Games"]
+            total_wins = player_profile["Total Wins"]
+            total_loses = player_profile["Total Loses"]
+            total_draw = player_profile["Total Draws"]
+            print("{:<15}{:<15}{:<15}{:<15}{:<15}".format(player_name, total_games, total_wins, total_loses,total_draw)) # formatting and presentation of Scoreboard along with values
+
+        '''player_profile = { # sub dictionary of profile_data dictionary
                         "Total Games":count,
                         "Total Wins":total_wins,
                         "Total Loses":total_loses,
                         "Total Draws":total_draw
                         }
         
-        #player_name = {"Player Name":player_name}
+        
         player_data.update({player_name:player_profile}) # updating the values in nested dictionary.
         #print("\nPlayer details on Scoreboard:   \n", player_data)
         
-        #for playername, playerprofile in player_data.items():
-            #print("\nPlayer Name : ", playername)
+        #loop for each element of player_profile in player_data to be presented.
         for playerprofile, value in player_data.items(): 
-                print(f'''{playerprofile}
-Total Games: {value['Total Games']}''')
+                print(f"{playerprofile} : Total Games: {value['Total Games']}")
                 print(f"Total Wins: {value['Total Wins']}")
                 print(f"Total Loses: {value['Total Loses']}")
-                print(f"Total Draws: {value['Total Draws']}")
-    
+                print(f"Total Draws: {value['Total Draws']}")'''
+    elif option == "0":
+        print("Exiting......")
+        break
     else: # if wish to completly close/exit the game.
         print("Exiting.......")    
         break
