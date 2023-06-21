@@ -84,7 +84,7 @@ while True:
         
         
     elif option == "2":
-        print("\nTodays highest scoring player is......\n")
+        print("\nTodays highest score is......\n")
         
         player_profile = {
                         "Player Name":player_name,
@@ -93,14 +93,17 @@ while True:
         player_data.update({player_name:player_profile})
 
         most_wins = 0
-        top_player = ""
+        top_players = []
 
         for player_name, player_profile in player_data.items():
             total_wins = player_profile.get("Total Win")
             if total_wins > most_wins:
                 most_wins = total_wins
-                top_player = player_name
-        print(f"{top_player} with amazing {most_wins} wins today!\n")
+                top_players = player_name
+            elif total_wins == most_wins:
+                top_players.append(player_name)
+
+        print(f"Incredible skills from {top_players} with amazing {most_wins} wins today!\n")
         print("Press any key to continue")
         input()
 
