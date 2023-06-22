@@ -14,9 +14,9 @@ elif option == "2":     # shows the highest scores of the play by taking the opt
             total_wins = player_profile.get("Total Win")    # getting the value from player_profile dictionary for Total wins.
             if total_wins > most_wins:      # comparing total_wins with most_wins
                 most_wins = total_wins      # most_wins will be the highest total wins
-                top_players = [player_name]   # top_players will be the player_name[s] who scored max total wins. Before adding [] each letter was considered player_name in Ver2 code
-            elif total_wins == most_wins:   # comparing if max total wins are tied with multiple players
-                top_players.append(player_name) # appending tied players with most wins to top_players list
+                top_players = [player_name]   # top_players will be the player_name[s] who scored max total wins. Before adding [] each letter was considered player_name in this code
+            elif total_wins == most_wins:   # comparing if total_wins are tied with most_wins meaning a tie between multiple players
+                top_players.append(player_name) # appending players tied with most_wins to top_players list
 
         for player in top_players:
             print(f"{player} showed some incredible skill with amazing {most_wins} wins today!\n") #For looping top_players list and displaying highest scoring player(s)
