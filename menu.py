@@ -18,10 +18,10 @@ player_data = {}
 # the program will go on until the user wants to exit.
 while True:
     print('''
-    [0] - Final Exit
+    [0] - Exit
     [1] - Play
-    [2] - High Scorer Player
-    [3] - Scoreboard/Dashboard
+    [2] - Leaderboard
+    [3] - Scoreboard
     [4] - How to Play
     ''')
 
@@ -33,14 +33,14 @@ while True:
         total_loses = 0
         total_draw = 0
 
-        print("\nYuhuuu!!! Your game begins now......:")
+        print("\nGame Begins!:")
         player_name = input("\nEnter Your Name: ")
         player_age = input("\nEnter Your Age: ")
 
         input()
         x("clear")
         print('''
-        Let's begin.......
+        Game On!
         Enter your choice from Rock, Paper, Scissors
 
         ''')
@@ -61,38 +61,38 @@ while True:
                 or (player_choice == "Scissors" and computer_choice1 == "Paper")
                 or (player_choice == "Paper" and computer_choice1 == "Rock")
             ):
-                print("\nYipppiee..... You WON!!!!")
+                print("\nYou Win!")
                 total_wins += 1
             elif (
                 (computer_choice1 == "Rock" and player_choice == "Scissors")
                 or (computer_choice1 == "Scissors" and player_choice == "Paper")
                 or (computer_choice1 == "Paper" and player_choice == "Rock")
             ):
-                print("\nSORRY!!!! You Lose.... Play again to Win")
+                print("\nComputer Wins.")
                 total_loses += 1
             elif computer_choice1 == player_choice:
-                print("\nIt's a draw..... Play again to Win!!!!")
+                print("\nIt's a Draw!")
                 total_draw += 1
             else:
-                print("\nError........................Warning...................")
+                print("\n........................Invalid Input........................")
 
             # Check if the player wants to continue the game.
             yes_no = input("\nDo you wish to continue: y/n  : ").lower()
             if yes_no == "n":
-                print("\nOh!!! No Problem you can play later......")
+                print("\See You another Time!")
                 x("clear")
                 break
 
             else:
-                print("\nGlad you are continuing.......")
+                print("\nFeeling lucky?")
                 input()
-                print("\nNext game...... ")
+                print("\nGame On!")
                 x("clear")
 
         continue
 
     elif option == "2":  # Display the highest scoring player by choosing option "2"
-        print("\nToday's highest scoring player is......\n")
+        print("\nAnd the Winner is...\n")
 
         player_profile = {
             "Player Name": player_name,
@@ -122,7 +122,7 @@ while True:
         input()
 
     elif option == "3":  # Display the scoreboard by choosing option "3"
-        print("\nHere you go....The Scoreboard of the Game:.........: \n")
+        print("\n...................... The Scoreboard of the Game: ...................... \n")
         print("{:<15}{:<15}{:<15}{:<15}{:<15}".format("Player", "Total Games", "Total Wins", "Total Loses", "Total Draws"))
         print("-" * 73)
 
