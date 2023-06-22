@@ -1,14 +1,16 @@
 from os import system as x
 import random
+import time
 
 player_data = {}
 
 while True:
     print('''
-    [0] - Final Exit
-    [1] - Play
-    [2] - High Scorer Player
-    [3] - Scoreboard/Dashboard
+    [0] - Exit
+    [1] - Play Game
+    [2] - Leaderboard
+    [3] - Scoreboard
+    [4] - How to Play
     ''')
 
     option = input("Select an option: ")
@@ -18,15 +20,15 @@ while True:
         total_loses = 0
         total_draw = 0
 
-        print("\nYuhuuu!!! Your game begins now......:")
+        print("\nGame Starts:")
         player_name = input("\nEnter Your Name: ")
         player_age = input("\nEnter Your Age: ")
 
         input()
         x("clear")
         print('''
-        Let's begin.......
-        Enter your choice from Rock, Paper, Scissors
+        Let's begin!
+        Enter your choice >>> Rock, Paper, Scissors
         ''')
 
         while True:
@@ -44,30 +46,30 @@ while True:
                 or (player_choice == "Scissors" and computer_choice1 == "Paper")
                 or (player_choice == "Paper" and computer_choice1 == "Rock")
             ):
-                print("\nYipppiee..... You WON!!!!")
+                print("\nYOU WIN!")
                 total_wins += 1
             elif (
                 (computer_choice1 == "Rock" and player_choice == "Scissors")
                 or (computer_choice1 == "Scissors" and player_choice == "Paper")
                 or (computer_choice1 == "Paper" and player_choice == "Rock")
             ):
-                print("\nSORRY!!!! You Lose.... Play again to Win")
+                print("\nYou lose, Try again?")
                 total_loses += 1
             elif computer_choice1 == player_choice:
-                print("\nIt's a draw..... Play again to Win!!!!")
+                print("\nIt's a draw! Try again?")
                 total_draw += 1
             else:
-                print("\nError........................Warning...................")
+                print("\n...................Invalid Input...................")
 
             yes_no = input("\nDo you wish to continue: y/n  : ").lower()
             if yes_no == "n":
-                print("\nOh!!! No Problem you play later......")
+                print("\nSee You Later!")
                 x("clear")
                 break
             else:
-                print("\nGlad you are continuing.......")
+                print("\nLet's GO!")
                 input()
-                print("\nNext game...... ")
+                print("\nNext Round")
                 x("clear")
 
         player_data[player_name] = {
@@ -97,6 +99,29 @@ while True:
             total_wins = player_profile["Total Win"]
             total_loses = player_profile["Total Loses"]
             print("{:<15}{:<15}{:<15}{:<15}".format(player_name, total_games, total_wins, total_loses))
+
+    elif option == "4":
+        instruction_text = '''
+        Rock, Paper, Scissors is an easy, fast game that everyone probably already knows.
+        But if you are new to this, down below you can find basic instructions on how to play it. 
+
+        In rock-paper-scissors, two players will each randomly choose one of three signs: rock, paper, scissors.
+        Here are the rules that determine which sign beats another:
+
+        - Rock wins over scissors (because rock smashes scissors)
+        - Scissors wins over paper (because scissors cut paper)
+        - Paper wins over rock (because paper covers rock)
+
+        If both players show the same sign, it's a tie.
+
+        Good luck and enjoy your game!
+        '''
+
+        # Iterate over each character in the instruction text and print it gradually
+        for char in instruction_text:
+            print(char, end='', flush=True)  # Print the character without a new line
+            time.sleep(0.01)  # Delay for 0.01 seconds
+
 
     else:
         print("Exiting.......")
