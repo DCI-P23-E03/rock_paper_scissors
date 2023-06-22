@@ -190,20 +190,20 @@ while True:
 
     elif option == "4":  # Display the instructions by choosing option "4"
         instructions = '''\nRock, Paper, Scissors is an easy, fast game that everyone probably already knows.
-        But if you are new into this, down below you can find basic instructions on how to play it. 
+But if you are new into this, down below you can find basic instructions on how to play it. 
 
-        In rock-paper-scissors, two players will each randomly choose one of three signs: rock, paper, scissors
-        Here are the rules that determine which sign beats another:
+In rock-paper-scissors, two players will each randomly choose one of three signs: rock, paper, scissors
+Here are the rules that determine which sign beats another:
 
-        - Rock wins over scissors (because rock smashes scissors)
-        - Scissors wins over paper (because scissors cut paper)
-        - Paper wins over rock (because paper covers rock)
+- Rock wins over scissors (because rock smashes scissors)
+- Scissors wins over paper (because scissors cut paper)
+- Paper wins over rock (because paper covers rock)
 
-        If both players show the same sign, it's a tie.
+If both players show the same sign, it's a tie.
 
-        Good luck and enjoy your game!'''
+Good luck and enjoy your game!'''
 
-        # Display text gradually using time.sleep()
+        # Display text gradually time.sleep
         for char in instructions:
             print(char, end="", flush=True)
             time.sleep(0.01)
