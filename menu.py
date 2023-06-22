@@ -2,7 +2,59 @@ import time
 from os import system as x
 import random
 
-# assigning the black value to the variables
+# ASCII graphics
+graphics = [
+    '''
+    _______
+---'   ____)
+      (_____)
+      (_____)
+      (____)
+---.__(___)
+''',
+    '''
+    _______
+---'    ____)____
+           ______)
+          _______)
+         _______)
+---.__________)
+''',
+    '''
+    _______
+---'   ____)____
+          ______)
+       __________)
+      (____)
+---.__(___)
+'''
+]
+
+# Display graphics with delay
+for graphic in graphics:
+    for line in graphic.splitlines():
+        for char in line:
+            print(char, end='', flush=True)
+            time.sleep(0.01)
+        print()
+    time.sleep(1)
+    x("clear")
+    
+welcome_text = "WELCOME TO THE GAME OF ROCK PAPER SCISSORS"
+for char in welcome_text:
+    print(char, end='', flush=True)
+    time.sleep(0.01)
+print()
+
+# Blink 3 times
+for _ in range(3):
+    time.sleep(0.5)
+    x("clear")
+    time.sleep(0.5)
+    print(welcome_text)
+    time.sleep(0.05)
+
+# Assigning the blank values to the variables
 player_name = ""
 player_age = ""
 total_wins = 0
@@ -14,8 +66,7 @@ choice1 = ""
 count = 0
 player_data = {}
 
-
-# the program will go on until the user wants to exit.
+# The program will continue until the user wants to exit.
 while True:
     print('''
     [0] - Exit
@@ -24,7 +75,6 @@ while True:
     [3] - Scoreboard
     [4] - How to Play
     ''')
-
 
     option = input("Select an option: ")
 
@@ -79,10 +129,9 @@ while True:
             # Check if the player wants to continue the game.
             yes_no = input("\nDo you wish to continue: y/n  : ").lower()
             if yes_no == "n":
-                print("\See You another Time!")
+                print("\nSee You another Time!")
                 x("clear")
                 break
-
             else:
                 print("\nFeeling lucky?")
                 input()
@@ -91,7 +140,7 @@ while True:
 
         continue
 
-    elif option == "2":  # Display the highest scoring player by choosing option "2"
+    elif option == "2":  # Display the highest scoring player by choosing option "2", also some fucked up shit i don't fully understand but it works.
         print("\nAnd the Winner is...\n")
 
         player_profile = {
