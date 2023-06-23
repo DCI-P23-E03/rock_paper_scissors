@@ -1,5 +1,58 @@
 from os import system as x
 import random
+import time
+
+# ASCII graphics
+graphics = [
+    '''
+    _______
+---'   ____)
+      (_____)
+      (_____)
+      (____)
+---.__(___)
+''',
+    '''
+    _______
+---'    ____)____
+           ______)
+          _______)
+         _______)
+---.__________)
+''',
+    '''
+    _______
+---'   ____)____
+          ______)
+       __________)
+      (____)
+---.__(___)
+'''
+]
+
+# Display graphics with delay
+for graphic in graphics:
+    for line in graphic.splitlines():
+        for char in line:
+            print(char, end='', flush=True)
+            time.sleep(0.01)
+        print()
+    time.sleep(1)
+    x("clear")
+
+welcome_text = "WELCOME TO THE GAME OF ROCK PAPER SCISSORS"
+for char in welcome_text:
+    print(char, end='', flush=True)
+    time.sleep(0.01)
+print()
+
+# Blink 3 times
+for _ in range(3):
+    time.sleep(0.5)
+    x("clear")
+    time.sleep(0.5)
+    print(welcome_text)
+    time.sleep(0.05)
 
 # assigning the black value to the variables 
 player_name = ""
@@ -37,9 +90,6 @@ while True:
         #while (player_name.isalpha() != True):  
         #    print("Please enter the name using valid string..")
             
-        #player_age = input("\nEnter Your Age: ")
-        #while (player_age.isnumeric() != True):
-        #    print("Please enter your age using valid numbers..")
         
         input()
         x("clear")
@@ -121,15 +171,12 @@ while True:
         elif most_wins == 0:   # check if the length of the top_player list is blank / zero or most_wins =0
             print(f"\n{player_name1} has not won any games yet...") 
        
-        elif len(top_players) != 1 and len(top_players) != 0 and player_data[player_name1].get("Total wins") == most_wins:
-            print(f"\nWe have mutiple winners with {most_wins} wins :")
-            for player in top_players:
-                print(player)
-        elif len(top_players) != 1 and len(top_players) != 0 and player_data[player_name1].get("Total wins") != most_wins:
-            print(f"{top_player} showed Top player")
+        elif len(top_players) > 1:
+            #if any(element in player_data[player_name1].get("Total wins") == most_wins):
+                print(f"\nWe have mutiple winners with {most_wins} wins :")
+                for player in top_players:
+                    print(player)
 
-        else:
-            print("Error")    
         
         print("\nPress any key to continue")
         input()
