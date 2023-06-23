@@ -85,7 +85,7 @@ while True:
         total_loses = 0
         total_draw = 0
             
-        print("\nYuhuuu!!! Your game begins now......:")
+        print("\nGame begins now......:")
         player_name = input("\nEnter Your Name: ") 
         #while (player_name.isalpha() != True):  
         #    print("Please enter the name using valid string..")
@@ -111,10 +111,10 @@ while True:
             
             # comparing the player_choice and computer_choice so as show the win, lose, draw.
             if ((player_choice == "Rock" and computer_choice1 == "Scissors") or (player_choice == "Scissors" and computer_choice1 =="Paper") or (player_choice == "Paper" and computer_choice1 =="Rock")):
-                print("\nYipppiee..... You WON!!!!")
+                print("\nYou WON!!!!Yipppiee..... ")
                 total_wins +=1
             elif ((computer_choice1 == "Rock" and player_choice == "Scissors") or (computer_choice1 == "Scissors" and player_choice == "Paper") or (computer_choice1== "Paper" and player_choice == "Rock")):
-                print("\nSORRY!!!! You Lose.... Play again to Win")
+                print("\nYou Lose....SORRY!!!! Play again to Win")
                 total_loses +=1
             elif (computer_choice1 == player_choice):
                 print("\nIt's a draw..... Play again to Win!!!!")
@@ -140,7 +140,7 @@ while True:
         
         
     elif option == "2": # shows the highest scores of the play by taking the option "2" 
-        print("\nPresenting the Leaderboard......\n")
+        print("\nPresenting the Leaderboard......")
 
         player_profile = {  # dictionary created for getting the highest scores throgh total wins.
                         "Player Name":player_name,
@@ -154,28 +154,28 @@ while True:
 
         for player_name1, player_profile1 in player_data.items():    # for loop for getting the player name and its profile details stored in player data dictonary
             total_wins = player_profile.get("Total Win",0)    # getting the value from player_profile dictionary for Total wins.
-            print("total wins: ",total_wins)            
+            #print("total wins: ",total_wins)            
             if total_wins > most_wins:      # comparing total_wins with most_wins
                 most_wins = total_wins      # most_wins will be the highest total wins
                 top_players = [player_name1]   # top_players will be the player_name[s] who scored max total wins. Before adding [] each letter was considered player_name in this code
 
             elif total_wins == most_wins:   # comparing if total_wins are tied with most_wins meaning a tie between multiple players
-                print("Total wins if equals to most wins =", total_wins)
+                #print("Total wins if equals to most wins =", total_wins)
                 top_players.append(player_name1) # appending players tied with most_wins to top_players list
 
         if len(top_players) == 1 and most_wins !=0:   # check if the length of top_player list is "1". 
-            print("Length of the top player if equals to one =",len(top_players) )
+            #print("Length of the top player if equals to one =",len(top_players) )
             top_player = top_players[0] # add the name of the player
-            print(f"\n{top_player} showed some incredible skill with {most_wins} wins today!..")
+            print(f"\n\033[92m{top_player} \033[0m showed some incredible skill with {most_wins} wins today!..")
 
         elif most_wins == 0:   # check if the length of the top_player list is blank / zero or most_wins =0
-            print(f"\n{player_name1} has not won any games yet...") 
+            print(f"\n\033[92m{player_name1}\033[0m has not won any games yet...") 
        
         elif len(top_players) > 1:
             #if any(element in player_data[player_name1].get("Total wins") == most_wins):
                 print(f"\nWe have mutiple winners with {most_wins} wins :")
                 for player in top_players:
-                    print(player)
+                    print('\033[92m'+player+'\033[0m')
 
         
         print("\nPress any key to continue")
@@ -183,7 +183,7 @@ while True:
 
         
     elif option == "3": # shows the scoreboard of the play by taking the option "3"
-        print("\nHere you goes....The Scoreboard of the Game:.........: \n")
+        print("\n...................... The Scoreboard of the Game: ...................... \n")
         print("\n{:<15}{:<15}{:<15}{:<15}{:<15}".format("Player", "Total Games", "Total Wins", "Total Loses", "Total Draws")) # formatting and presentation of Scoreboard
         print("-" * 73) # formatting and presentation of Scoreboard
       
@@ -205,22 +205,26 @@ while True:
 
         
     elif option == "4":
-        print(""" 
-        Rock, Paper, Scissors is an easy, fast game that everyone probably already knows.
-        But if you are new into this, down below you can find basic instructions on how to play it. 
+        instructions = '''\nRock, Paper, Scissors is an easy, fast game that everyone probably already knows.
+But if you are new into this, down below you can find basic instructions on how to play it. 
 
-        In rock-paper-scissors, two players will each randomly choose one of three  signs: rock, paper, scissors
-        Here are the rules that determine which sign beats another:
+In rock-paper-scissors, two players will each randomly choose one of three  signs: rock, paper, scissors
+Here are the rules that determine which sign beats another:
 
-        -Rock wins over scissors (because rock smashes scissors)
-        -Scissors wins over paper (because scissors cut paper)
-        -Paper wins over rock (because paper covers rock)
+-Rock wins over scissors (because rock smashes scissors)
+-Scissors wins over paper (because scissors cut paper)
+-Paper wins over rock (because paper covers rock)
 
-        If both players show the same sign, it’s a tie/draw.
+If both players show the same sign, it’s a tie/draw.
 
-        Good luck and enjoy your game !
+Good luck and enjoy your game !
 
-        """)
+'''
+        # Display text gradually time.sleep
+        for char in instructions:
+            print(char, end="", flush=True)
+            time.sleep(0.01)
+
 
     elif option == "0":
         print("Exiting......")
